@@ -28,3 +28,5 @@ class Reader(AbstractUser):
                 check=models.Q(title__in=['Mr','Mrs','Ms','Dr']) 
             )
          ] 
+    def __str__(self) -> str:   
+        return  f'{self.title} {self.username}'
