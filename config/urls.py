@@ -16,8 +16,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path ,include , re_path
+#from apps.myread.views import home_page , HomePage
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # Include all urls from myread
+    path("",include('apps.myread.urls', namespace='myread-urls',)),
+    path("",include('apps.book.urls',namespace= 'book-urls',))
+    
 ]

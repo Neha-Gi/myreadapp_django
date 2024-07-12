@@ -15,7 +15,8 @@ CUSTOM_APPS = [
     #USER DEFINED APPS
     "apps.reader",
     "apps.book",
-    "apps.myread"
+    "apps.myread",
+    "apps.core"
 ]
 THIRD_PARTY_APPS = [
     #EXTERNAL APPS
@@ -37,7 +38,12 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+        # You want to be explicit on the location of your templates
         "DIRS": [],
+        # Django will search for templates in each app that is 
+        # registered in the INSTALLED_APPS
+        # It will look for a specific folder called'templates'
+
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
