@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ block.super }} - Logout{% endblock title %}
+{% block stylesheet %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+{% endblock stylesheet %}
+{% block content %}
+    <h1>Log out</h1>
+    <div class='post-form'>
+        <p>Are you sure?</p>
+           
+        <form method='post'>
+            {% csrf_token %}
+           
+            <input type='submit' value='Logout' />
+        </form>
+    </div>
+{% endblock content %}
+
+

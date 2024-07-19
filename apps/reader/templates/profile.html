@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }} - Profile{% endblock title %}
 
 {% block content %}
-    <h1 class='head'>Welcome to My Read App</h1>
+    <h1 class='head'>Welcome to My Read App {{request.user.username}}</h1>
     <div class='viewed-books'>
         <h3>Viewed Books</h3>
         {% for book_isbn, book_title in request.session.viewed_books %}
@@ -12,4 +12,5 @@
             <p>No books viewed recently.</p>
         {% endfor %}
     </div>    
+    <a href="{% url 'reader-urls:reader-logout' %}">Log Out</a>
 {% endblock content %}

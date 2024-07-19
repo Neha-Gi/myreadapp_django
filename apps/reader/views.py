@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login ,logout
+from django.contrib.auth.decorators import login_required
 from .models import Reader
 
 # Create your views here.
@@ -8,7 +9,7 @@ def login_view(request):
     
     # pre-submit state
     error_message = None
-    form = AuthenticationForm
+    form = AuthenticationForm()
 
     # post-submit state
     if request.method == "POST":
@@ -32,8 +33,15 @@ def login_view(request):
         error_message = 'Sorry Try again'
     context = {'form':form,'error_message':error_message}  
     return render(request,'login.html',context) 
-
+@login_required
 def profile(request):
    # breakpoint()
  
     return render(request,'profile.html')
+
+def logout_view(request):
+    if request.method == 'GET':
+        return render(request, 'logout.html') 
+    elif request.method == 'POST':
+        logout(request)
+        return redirect('reader-urls:reader-login')

@@ -98,3 +98,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Inform django about the new user model
 # AUTH_USER_MODEL = <app_name>.<model_class>
 AUTH_USER_MODEL = 'reader.Reader'
+
+LOGIN_URL = '/reader/login/'
